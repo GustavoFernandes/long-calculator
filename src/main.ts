@@ -24,6 +24,9 @@ class Addition {
 			this.sum[c] = columnSum % 10;
 			this.carry[c + 1] = Math.floor(columnSum / 10);
 		}
+
+		// check for any remaining carry
+		if (this.carry[longestNumber]) this.sum[longestNumber] = this.carry[longestNumber];
 	}
 }
 
@@ -34,12 +37,4 @@ function toNumberArray(n: number): number[] {
 		n = Math.floor(n / 10);
 	}
 	return a;
-}
-
-function addTwoNumbers(a: number, b: number): number {
-	return a + b;
-}
-
-function double(a: number): number {
-	return a*2;
 }

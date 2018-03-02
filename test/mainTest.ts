@@ -1,21 +1,8 @@
-describe("toNumberArray", function () {
-  it("converts numbers to digits array", function () {
+describe('toNumberArray', function () {
+  it('converts numbers to digits array', function () {
     let a = 6789;
     let b = [9,8,7,6];
     expect(toNumberArray(a)).toEqual(b);
-  })
-});
-
-describe("add", function () {
-  it("adds 2 numbers", function () {
-    let a = addTwoNumbers(5,2);
-    expect(a).toBe(7);
-  })
-});
-
-describe('double', function () {
-  it('doubles the number', function () {
-    expect(double(16)).toBe(32);
   })
 });
 
@@ -42,5 +29,10 @@ describe('addition', function () {
     ]);
     expect(a.sum).toEqual([8,7,6]);
     expect(a.carry).toEqual([0,1,1,0]);
+
+    let b = new Addition([3,7]);
+    expect(b.map).toEqual([[3],[7]]);
+    expect(b.sum).toEqual([0,1]);
+    expect(b.carry).toEqual([0,1]);
   });
 });
