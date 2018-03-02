@@ -17,9 +17,7 @@ class Addition {
 		for (let c = 0; c < longestNumber; c++) {
 			let columnSum: number = 0;
 			for (let r = 0; r < this.map.length; r++) {
-				let n: number = this.map[r][c];
-				if (n === undefined) n = 0;
-				columnSum += n;
+				columnSum += this.map[r][c] ? this.map[r][c] : 0;
 			}
 
 			columnSum += this.carry[c];
@@ -45,6 +43,3 @@ function addTwoNumbers(a: number, b: number): number {
 function double(a: number): number {
 	return a*2;
 }
-
-let o: number[] = [97, 3, 400, 178];
-let add = new Addition(o);
