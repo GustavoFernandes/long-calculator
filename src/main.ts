@@ -1,25 +1,30 @@
 class Addition {
+
+	readonly map: number[][];
+	readonly sum: number[];
+	readonly carry: number[];
+
 	constructor(operands: number[]) {
-		let map: number[][] = [[]];
+		this.map = [[]];
 		let longestNumber: number = -1;
 		for (let i = 0; i < operands.length; i++) {
-			map[i] = toNumberArray(operands[i]);
-			longestNumber = Math.max(map[i].length, longestNumber);
+			this.map[i] = toNumberArray(operands[i]);
+			longestNumber = Math.max(this.map[i].length, longestNumber);
 		}
 
-		let carry: number[] = [0];
-		let sum: number[] = [0];
+		this.carry = [0];
+		this.sum = [0];
 		for (let c = 0; c < longestNumber; c++) {
 			let columnSum: number = 0;
-			for (let r = 0; r < map.length; r++) {
-				let n: number = map[r][c];
+			for (let r = 0; r < this.map.length; r++) {
+				let n: number = this.map[r][c];
 				if (n === undefined) n = 0;
 				columnSum += n;
 			}
 
-			columnSum += carry[c];
-			sum[c] = columnSum % 10;
-			carry[c + 1] = Math.floor(columnSum / 10);
+			columnSum += this.carry[c];
+			this.sum[c] = columnSum % 10;
+			this.carry[c + 1] = Math.floor(columnSum / 10);
 		}
 	}
 }
