@@ -1,3 +1,33 @@
+window.onload = init;
+
+function init() {
+	let textarea = document.getElementById('textarea');
+	if (!textarea) return;
+	textarea.onkeypress = function(keypress) {
+		console.log(keypress);
+
+		// TODO: add support for backspace and delete
+
+		if (keypress.key === '+') {
+
+			// TODO: don't let a new line get created if no numbers have been inputted
+
+			if (textarea.value.indexOf('+')) textarea.value = textarea.value.replace('+ ', '');
+			textarea.value += '\n+ ';
+			keypress.preventDefault();
+		} else if (keypress.key === 'Enter') {
+			if (textarea.value.indexOf('+')) parseAddition(textarea.value);
+			keypress.preventDefault();
+		} else if (keypress.which < 48 || keypress.which > 57) {
+			keypress.preventDefault();
+		}
+	}
+}
+
+function parseAddition(s: string) {
+	// TODO
+}
+
 class Addition {
 
 	readonly map: number[][];
