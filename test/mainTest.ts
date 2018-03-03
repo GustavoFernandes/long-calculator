@@ -34,5 +34,9 @@ describe('addition', function () {
     expect(b.map).toEqual([[3],[7]]);
     expect(b.sum).toEqual([0,1]);
     expect(b.carry).toEqual([0,1]);
+
+    let c = new Addition([6578, 899, 7877, 99999, 77]);
+    expect(c.carry).toEqual([0, 4, 4, 3, 2, 1]);
+    expect(c.sum).toEqual(toNumberArray(115430));
   });
 });
