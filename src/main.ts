@@ -1,9 +1,9 @@
 window.onload = init;
 
 function init() {
-	let textarea = document.getElementById('textarea');
+	let textarea: any = document.getElementById('textarea');
 	if (!textarea) return;
-	textarea.onkeypress = function(keypress) {
+	textarea.onkeypress = function(keypress: any) {
 		console.log(keypress);
 
 		// TODO: add support for backspace and delete
