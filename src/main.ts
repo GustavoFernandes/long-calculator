@@ -9,12 +9,10 @@ function init() {
 		// TODO: add support for backspace and delete
 
 		if (keypress.key === '+') {
-
-			// TODO: don't let a new line get created if no numbers have been inputted
-
-			if (textarea.value.indexOf('+')) textarea.value = textarea.value.replace('+ ', '');
-			textarea.value += '\n+ ';
 			keypress.preventDefault();
+			if (textarea.value.endsWith('+ ') || textarea.value.length === 0) return;
+			if (textarea.value.includes('+ ')) textarea.value = textarea.value.replace('+ ', '');
+			textarea.value += '\n+ ';
 		} else if (keypress.key === 'Enter') {
 			if (textarea.value.indexOf('+')) parseAddition(textarea.value);
 			keypress.preventDefault();
