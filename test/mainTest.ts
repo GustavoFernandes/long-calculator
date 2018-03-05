@@ -40,3 +40,10 @@ describe('addition', function () {
     expect(c.sum).toEqual(toNumberArray(115430));
   });
 });
+
+describe('addition parser', function () {
+  it ('parses addition text into a number array', function () {
+    expect(parseAddition('1\n+ 2')).toEqual([1,2]);
+    expect(parseAddition('1\n2\n+ ')).toEqual([1,2]);
+  });
+});
