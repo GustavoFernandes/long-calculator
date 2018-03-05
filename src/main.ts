@@ -15,7 +15,10 @@ function init() {
 			textarea.value += '\n+ ';
 		} else if (keypress.key === 'Enter') {
 			keypress.preventDefault();
-			if (textarea.value.includes('+ ')) display(parseAddition(textarea.value));
+			if (textarea.value.includes('+ ')) {
+				let n: number[] = parseAddition(textarea.value);
+				display(new Addition(n), textarea);
+			}
 		} else if (keypress.which < 48 || keypress.which > 57) {
 			keypress.preventDefault();
 		}
@@ -32,8 +35,21 @@ function parseAddition(s: string): number[] {
 	return tokens.map(Number);
 }
 
-function display(a: Addition) {
-	// TODO
+function display(a: Addition, textarea: any) {
+
+	// TODO: remove unnecessary carries (.e.g. '45+1' has '000' carry)
+
+	// TODO: make dashed line as long as longest line
+	// TODO: use something like string padding to create this?
+	let dashedLine: string = '';
+	for (let i = 0; i < a.sum.length + 2; i++) {
+		dashedLine += '-';
+	}
+
+	textarea.value = a.carry.reverse().join('') + '\n' +
+			textarea.value + '\n' +
+			dashedLine + '\n' +
+			a.sum.reverse().join('');
 }
 
 class Addition {
@@ -68,6 +84,7 @@ class Addition {
 	}
 }
 
+// converts 456 to [6,5,4]
 function toNumberArray(n: number): number[] {
 	let a: number[] = [];
 	while (n > 0) {
