@@ -14,15 +14,25 @@ function init() {
 			if (textarea.value.includes('+ ')) textarea.value = textarea.value.replace('+ ', '');
 			textarea.value += '\n+ ';
 		} else if (keypress.key === 'Enter') {
-			if (textarea.value.indexOf('+')) parseAddition(textarea.value);
 			keypress.preventDefault();
+			if (textarea.value.includes('+ ')) display(parseAddition(textarea.value));
 		} else if (keypress.which < 48 || keypress.which > 57) {
 			keypress.preventDefault();
 		}
 	}
 }
 
-function parseAddition(s: string) {
+function parseAddition(s: string): number[] {
+	let tokens: string[] = s.split('\n');
+	if (tokens[tokens.length - 1].length === 2) { // if last token is '+ '
+		tokens.pop();
+	} else { // last token contains '+ '
+		tokens[tokens.length - 1] = tokens[tokens.length - 1].substr(2);
+	}
+	return tokens.map(Number);
+}
+
+function display(a: Addition) {
 	// TODO
 }
 
