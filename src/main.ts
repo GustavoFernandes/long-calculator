@@ -16,6 +16,14 @@ function init() {
 		} else if (keypress.key === 'Enter') {
 			keypress.preventDefault();
 			if (textarea.value.includes('+ ')) {
+
+				if (textarea.value.endsWith('+ ')) {
+					// move '+ ' to before the previous number (e.g. '1\n2\n+ ' => '1\n+ 2')
+					textarea.value = textarea.value.replace('\n+ ', '');
+					let lastNewlineIndex = textarea.value.lastIndexOf('\n') + 1;
+					textarea.value = [textarea.value.slice(0, lastNewlineIndex), '+ ', textarea.value.slice(lastNewlineIndex)].join('');
+				}
+				
 				let n: number[] = parseAddition(textarea.value);
 				display(new Addition(n), textarea);
 			}
