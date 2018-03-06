@@ -2,14 +2,14 @@
   "name": "long-calculator",
   "version": "0.1.0",
   "description": "",
-  "main": "dist/main.js",
+  "main": "docs/main.js",
   "directories": {
     "test": "test"
   },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "author": "",
+  "author": "Gustavo A. Fernandes",
   "license": "MIT",
   "devDependencies": {
     "gulp": "^3.9.1",
